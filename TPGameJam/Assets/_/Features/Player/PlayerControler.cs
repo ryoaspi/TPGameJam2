@@ -110,12 +110,13 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
 
     [SerializeField] private int _life = 4;
     [SerializeField] private float _speed = 1f;
-    [SerializeField] private GameObject _projectile;
-
+    [SerializeField]private PoolManager _poolManager;
+    
     private Vector2 _move;
     private Vector3 _look;
     private InputPlayer.InputPlayer _playerInput;
     private float _speedBase = 0.001f;
+    
 
     #endregion
 }

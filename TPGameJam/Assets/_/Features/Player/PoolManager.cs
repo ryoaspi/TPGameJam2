@@ -9,6 +9,11 @@ public class PoolManager : MonoBehaviour
 
     private void Awake()
     {
+        if (_projectilePrefab == null)
+        {
+            Debug.LogError("Projectile  prefab is not assigned", this);
+            return; 
+        }
         for (int i = 0; i < _poolsize; i++)
         {
             var instance = Instantiate(_projectilePrefab, transform);
@@ -17,14 +22,7 @@ public class PoolManager : MonoBehaviour
         }
         
     }
-
-
-
-    void Start()
-    {
-        GetFirstAvailableProjectile();
-    }
-
+    
     #endregion
 
 
@@ -32,9 +30,9 @@ public class PoolManager : MonoBehaviour
 
     public GameObject GetFirstAvailableProjectile()
     {
-        foreach (var instance in _poolContener)
+        foreach (GameObject instance in _poolContener)
         {
-            if (instance.activeSelf == false)
+            if (!instance.activeSelf)
             {
                 return instance;
             } 
@@ -43,7 +41,7 @@ public class PoolManager : MonoBehaviour
         }
 
         // No available instance
-        var newInstance = Instantiate(_projectilePrefab, transform);
+        GameObject newInstance = Instantiate(_projectilePrefab, transform);
         newInstance.SetActive(false);
         _poolContener.Add(newInstance);
         return newInstance;
@@ -57,8 +55,9 @@ public class PoolManager : MonoBehaviour
     #region Private And Protected
 
     [SerializeField] private GameObject _projectilePrefab;
-    [SerializeField] private List<GameObject> _poolContener = new List<GameObject>();
     [SerializeField] private int _poolsize = 10;
+    
+    private List<GameObject> _poolContener = new List<GameObject>();
 
     #endregion
 }

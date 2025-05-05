@@ -260,6 +260,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1091721290 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6016484711660746168, guid: 99decdc2c687d754b9a79b631b596146, type: 3}
+  m_PrefabInstance: {fileID: 406961353}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 447d5df24435b0748ada2fca141c3dba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1819153228
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,6 +425,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _waypoints: []
+  _speed: 0.1
+  _loop: 1
 --- !u!61 &1819153234
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -564,6 +577,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3476084629278492660, guid: 08d885be996f8634581340f03105fddb, type: 3}
+      propertyPath: _poolManager
+      value: 
+      objectReference: {fileID: 1091721290}
     - target: {fileID: 5666381891240754950, guid: 08d885be996f8634581340f03105fddb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -602,18 +619,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5666381891240754950, guid: 08d885be996f8634581340f03105fddb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6445881470718297687, guid: 08d885be996f8634581340f03105fddb, type: 3}
-      propertyPath: m_DrawMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6445881470718297687, guid: 08d885be996f8634581340f03105fddb, type: 3}
-      propertyPath: m_MaskInteraction
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6445881470718297687, guid: 08d885be996f8634581340f03105fddb, type: 3}
-      propertyPath: m_SpriteSortPoint
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

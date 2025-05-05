@@ -9,17 +9,13 @@ public class AmmoControle : MonoBehaviour
         _lifeTime = _maxLiveTime;
     }
 
-    void Start()
-    {
 
-    }
 
 
     void Update()
     {
         Move();
         ShootLiveTime();
-        GetDamage();
     }
 
     #endregion

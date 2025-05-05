@@ -104,7 +104,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _life: 4
   _speed: 10
-  _poolManager: {fileID: 6016484711660746168, guid: 99decdc2c687d754b9a79b631b596146, type: 3}
+  _projectile: {fileID: 0}
+  _poolManager: {fileID: 0}
 --- !u!50 &6037415478254895947
 Rigidbody2D:
   serializedVersion: 5
