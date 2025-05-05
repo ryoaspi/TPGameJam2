@@ -6,7 +6,7 @@ public class AmmoControle : MonoBehaviour
 
     private void OnEnable()
     {
-        _lifeTime = 3;
+        _lifeTime = _maxLiveTime;
     }
 
     void Start()
@@ -67,7 +67,8 @@ public class AmmoControle : MonoBehaviour
 
     [SerializeField] private float _speedShoot = 2f;
     [SerializeField] private int _damage = 1;
+    private float _maxLiveTime = 2f;
 
-    private float _lifeTime = 1f;
+    private float _lifeTime;
     #endregion
 }

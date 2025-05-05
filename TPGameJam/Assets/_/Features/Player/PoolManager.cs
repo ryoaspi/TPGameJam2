@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -10,19 +9,20 @@ public class PoolManager : MonoBehaviour
 
     private void Awake()
     {
-        GetFirstAvailableProjectile();
-    }
-
-
-
-    void Start()
-    {
         for (int i = 0; i < _poolsize; i++)
         {
             var instance = Instantiate(_projectilePrefab, transform);
             instance.SetActive(false);
             _poolContener.Add(instance);
         }
+        
+    }
+
+
+
+    void Start()
+    {
+        GetFirstAvailableProjectile();
     }
 
     #endregion
@@ -34,7 +34,12 @@ public class PoolManager : MonoBehaviour
     {
         foreach (var instance in _poolContener)
         {
-            if (instance.activeSelf == false) return instance;
+            if (instance.activeSelf == false)
+            {
+                return instance;
+            } 
+            
+
         }
 
         // No available instance
@@ -49,18 +54,11 @@ public class PoolManager : MonoBehaviour
     #endregion
 
 
-    #region Utils
-
-
-
-    #endregion
-
-
     #region Private And Protected
 
     [SerializeField] private GameObject _projectilePrefab;
     [SerializeField] private List<GameObject> _poolContener = new List<GameObject>();
-    [SerializeField] private int _poolsize;
+    [SerializeField] private int _poolsize = 10;
 
     #endregion
 }

@@ -22,9 +22,10 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
 
     
     void Update()
-    {
+    {        
         Move();
         TargetMouse();
+        UpdateMouseLook();
     }
 
     #endregion
@@ -35,14 +36,12 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        _move = context.ReadValue<Vector2>();
-        
+        _move = context.ReadValue<Vector2>();        
     }
 
     public void OnLook(InputAction.CallbackContext context)
     {
-        _look = Camera.main.ScreenToWorldPoint(context.ReadValue<Vector2>()); // recherche le pointeur de la souris
-        _look.z = 0;
+        
     }
 
     public void OnAttack(InputAction.CallbackContext context)
@@ -86,6 +85,24 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
         }
     }
 
+    private void CalculeLife()
+    {
+        if (_life <= 0)
+        {
+            gameObject.SetActive(false);
+        }
+    }
+
+    private void UpdateMouseLook()
+    {
+        
+          Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+          Vector2 direction = mousePos - transform.position;
+          float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+          transform.rotation = Quaternion.Euler(0, 0, angle - 90);
+        
+    }
+
     #endregion
 
 
@@ -93,7 +110,7 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
 
     [SerializeField] private int _life = 4;
     [SerializeField] private float _speed = 1f;
-    [SerializeField] private PoolManager _poolManager;
+    [SerializeField] private GameObject _projectile;
 
     private Vector2 _move;
     private Vector3 _look;
