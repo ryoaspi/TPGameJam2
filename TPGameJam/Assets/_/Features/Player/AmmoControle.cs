@@ -16,6 +16,7 @@ public class AmmoControle : MonoBehaviour
     {
         Move();
         ShootLiveTime();
+        GetDamage();
     }
 
     #endregion
@@ -43,6 +44,7 @@ public class AmmoControle : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         gameObject.SetActive(false);
+        Debug.Log("touché : " +  other.name);
     }
 
     #endregion

@@ -79,15 +79,11 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Obstacle") || collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
             gameObject.SetActive(false);
         }
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
-        {
-            _life -= 1;
 
-        }
     }
 
     private void CalculeLife()
