@@ -24,11 +24,16 @@ public class EnemyTurrel : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Collision");
+        
         if (collision.GetComponent<AmmoControle>())
         {
             CalculeDamage(collision.GetComponent<AmmoControle>());
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        gameObject.SetActive(false);
     }
 
     #endregion

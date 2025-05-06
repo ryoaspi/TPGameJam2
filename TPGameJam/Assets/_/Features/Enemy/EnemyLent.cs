@@ -3,16 +3,11 @@ using UnityEngine;
 public class EnemyLent : MonoBehaviour
 {
     #region Api Unity
-    private void Awake()
-    {
-        Debug.Log("Bonjour");
-    }
 
     void Start()
     {
         if (_waypoints.Length == 0)
-        {
-            Debug.LogError("Aucun waypoint assigné !");
+        {            
             enabled = false;
         }
 
@@ -21,8 +16,7 @@ public class EnemyLent : MonoBehaviour
     }
    
     void Update()
-    {
-        Debug.Log("Je suis en VIE");
+    {        
         Move();
         TryShoot();
     }
@@ -32,6 +26,10 @@ public class EnemyLent : MonoBehaviour
         {
             CalculeDamage(collision.GetComponent<AmmoControle>());
         }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        gameObject.SetActive(false);
     }
 
     #endregion
@@ -86,11 +84,6 @@ public class EnemyLent : MonoBehaviour
             gameObject.SetActive(false);
             _currentLife = _life;
         }
-    }
-
-    private void OnDestroy()
-    {
-        Debug.Log("Oh je suis mort");
     }
 
     #endregion
