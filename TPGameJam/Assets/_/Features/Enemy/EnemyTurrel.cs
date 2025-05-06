@@ -33,7 +33,10 @@ public class EnemyTurrel : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        gameObject.SetActive(false);
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     #endregion
