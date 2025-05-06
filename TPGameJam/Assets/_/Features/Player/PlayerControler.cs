@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,7 +15,9 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
     private void OnEnable()
     {
         _playerInput.Enable();
+        _lifeUI.SetInitialLife(_life);
         _currentLife = _life;
+        
     }
     private void OnDisable()
     {
@@ -63,6 +66,24 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
     }
 
     #endregion
+    
+    
+    #region Main Methods
+    
+    public void TakeDamage(int amount)
+    {
+        _life -= amount;
+        _life = Mathf.Max(0, _life);
+        _lifeUI.TakeDamage(amount);
+    }
+
+    public void Heal(int amount)
+    {
+        _life += amount;
+        _lifeUI.Heal(amount);
+    }
+    
+    #endregion
 
 
     #region Utils
@@ -97,7 +118,16 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
 
     private void CalculeLife(ShootEnemy shoot)
     {
-        _currentLife -= shoot.GetDamage();
+        int damage = shoot.GetDamage();
+        _currentLife -= damage;
+        // Met à jour l'UI manuellement
+        if (_lifeUI != null)
+        {
+            for (int i = 0; i < damage; i++)
+            {
+                _lifeUI.TakeDamage(1);
+            }
+        }
         if (_currentLife <= 0)
         {
             gameObject.SetActive(false);
@@ -121,6 +151,7 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
     #region Private And Protected
 
     [SerializeField] private int _life = 4;
+    [SerializeField] private PlayerLifeUI _lifeUI;
     [SerializeField] private float _speed = 1f;
     [SerializeField] private PoolManager _poolManager;
     [SerializeField] private float _gravity = 0.01f;

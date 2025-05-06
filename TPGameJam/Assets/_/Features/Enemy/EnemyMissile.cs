@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class EnemyMissile : MonoBehaviour
@@ -5,18 +6,35 @@ public class EnemyMissile : MonoBehaviour
     #region Api Unity
     void Start()
     {
-        
+        if (_player == null)
+        {
+            GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+            if (playerObject != null)
+                _player = playerObject.transform;
+        }
     }
 
     
     void Update()
     {
-        if (!_player) return;
+        if (!_player || _hasLaunched) return;
 
         float distance = Vector3.Distance(transform.position, _player.position);
+        
         if (distance <= _detectionRange)
         {
-            RotateTowardPlayer();            
+            
+            SetLaunchDirection(); //Calcule direction + rotation
+            _hasLaunched = true; // Marque le missile comme lancÃ©
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (_hasLaunched)
+        {
+            
+            transform.position += _moveDirection * (_speed * Time.fixedDeltaTime);
         }
     }
 
@@ -33,30 +51,23 @@ public class EnemyMissile : MonoBehaviour
 
     #region Utils
 
-    private void RotateTowardPlayer()
+    private void SetLaunchDirection()
     {
-        Vector3 direction = (_player.position - transform.position).normalized;
-
-        // Calcul de l'angle sur le plan Z (dans l'espace local)
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-
-        //Applique l'offet pour compenser l'orientation initiale
+        _moveDirection = (_player.position - transform.position).normalized;
+        
+        float angle = Mathf.Atan2(_moveDirection.y, _moveDirection.x) * Mathf.Rad2Deg;
         angle += _angleOffset;
-
-        // On garde uniquement la rotation Z (pitch), on ignore x et y
-        float currentZ = transform.eulerAngles.z;
-        float newZ = Mathf.LerpAngle(currentZ, angle, _rotationSpeed * Time.deltaTime);
-
-        transform.rotation = Quaternion.Euler(0f, 0f, newZ);
-        transform.position = new Vector3(direction.x * _speed * Time.deltaTime, direction.y * _speed * Time.deltaTime, 0f);
+        
+        transform.rotation = Quaternion.Euler(0, 0, angle);
     }
+    
 
     #endregion
 
 
     #region Private And Protected
 
-    [Header("Détection")]
+    [Header("Dï¿½tection")]
     [SerializeField] private Transform _player;
     [SerializeField] private float _detectionRange = 15f;
     [SerializeField] private float _rotationSpeed = 5f;
@@ -68,6 +79,9 @@ public class EnemyMissile : MonoBehaviour
 
     [Header("Vitesse")]
     [SerializeField] private float _speed = 2f;
+
+    private bool _hasLaunched = false;
+    private Vector3 _moveDirection;
 
     #endregion
 }
