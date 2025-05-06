@@ -3,13 +3,11 @@ using UnityEngine;
 public class EnemyTurrel : MonoBehaviour
 {
     #region Api Unity
-    
-    void Start()
-    {
-        
-    }
 
-    
+    private void Awake()
+    {
+        _currentLife = _life;
+    }
     void Update()
     {
         if (!_player) return;
@@ -20,6 +18,16 @@ public class EnemyTurrel : MonoBehaviour
         {
             RotateTowardPlayer();
             TryShoot();
+           
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("Collision");
+        if (collision.GetComponent<AmmoControle>())
+        {
+            CalculeDamage(collision.GetComponent<AmmoControle>());
         }
     }
 
@@ -64,7 +72,15 @@ public class EnemyTurrel : MonoBehaviour
                
         }
     }
-
+    private void CalculeDamage(AmmoControle ammo)
+    {
+        _currentLife -= ammo.GetDamage();
+        if (_currentLife <= 0)
+        {
+            gameObject.SetActive(false);
+            _currentLife = _life;
+        }
+    }
     #endregion
 
 
@@ -80,6 +96,10 @@ public class EnemyTurrel : MonoBehaviour
     [SerializeField] private float _fireRate = 1f; // Tir par seconde
     private float _fireCooldown = 0f;
     [SerializeField] private float _angleOffset = -45f;
+
+    [Header("vie")]
+    [SerializeField] private int _life = 3;
+    private int _currentLife;
 
     #endregion
 }

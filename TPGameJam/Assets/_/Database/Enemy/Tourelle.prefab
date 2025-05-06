@@ -141,5 +141,6 @@ MonoBehaviour:
   _detectionRange: 15
   _rotationSpeed: 5
   _ammo: {fileID: 9205379601952630962, guid: 50f5ffab8f16711468bfc317484f9fc4, type: 3}
-  _fireRate: 5
-  _angleOffset: -45
+  _fireRate: 1
+  _angleOffset: -90
+  _life: 3

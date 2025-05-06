@@ -9,14 +9,28 @@ public class AmmoControle : MonoBehaviour
         _lifeTime = _maxLiveTime;
     }
 
-
-
-
     void Update()
     {
         Move();
         ShootLiveTime();
         GetDamage();
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("Collision");
+        gameObject.SetActive(false);
+    }
+
+    #endregion
+
+
+    #region Main Method
+
+    public int GetDamage()
+    {
+        int damage = _damage;
+        return damage;
     }
 
     #endregion
@@ -41,23 +55,6 @@ public class AmmoControle : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        gameObject.SetActive(false);
-        Debug.Log("touché : " +  other.name);
-    }
-
-    #endregion
-
-
-    #region Main Method
-
-    public int GetDamage()
-    {
-        int damage = _damage;
-        return damage;
-    }
-
     #endregion
 
 
@@ -68,5 +65,6 @@ public class AmmoControle : MonoBehaviour
     private float _maxLiveTime = 2f;
 
     private float _lifeTime;
+
     #endregion
 }
