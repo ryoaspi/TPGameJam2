@@ -14,6 +14,7 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
     private void OnEnable()
     {
         _playerInput.Enable();
+        _currentLife = _life;
     }
     private void OnDisable()
     {
@@ -25,7 +26,7 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
     {        
         Move();
         TargetMouse();
-        UpdateMouseLook();
+        UpdateMouseLook();        
     }
 
     #endregion
@@ -86,11 +87,21 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
 
     }
 
-    private void CalculeLife()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (_life <= 0)
+        if (collision.GetComponent<ShootEnemy>())
+        {
+            CalculeLife(collision.GetComponent<ShootEnemy>());
+        }
+    }
+
+    private void CalculeLife(ShootEnemy shoot)
+    {
+        _currentLife -= shoot.GetDamage();
+        if (_currentLife <= 0)
         {
             gameObject.SetActive(false);
+            _currentLife = _life;
         }
     }
 
@@ -117,7 +128,7 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
     private Vector2 _move;
     private Vector3 _look;
     private InputPlayer.InputPlayer _playerInput;
-    private float _speedBase = 0.001f;
+    private int _currentLife;
     
 
     #endregion

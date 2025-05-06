@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 9019095785638131507}
   - component: {fileID: 3525969667748894978}
-  - component: {fileID: 755034043307349119}
   - component: {fileID: 4567351166479200469}
   - component: {fileID: 766162948610226938}
   m_Layer: 9
@@ -90,26 +89,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &755034043307349119
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3048103401888826592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb449b020c24ef941897e76fde4ebb23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 0
-  _move: {x: 0, y: 0, z: 0}
-  _look: {x: 0, y: 0, z: 0}
-  _life: 3
-  _player: {fileID: 0}
-  _activationDistance: 5
-  _enemyToActivate: {fileID: 3048103401888826592}
-  _scoreValue: 0
 --- !u!58 &4567351166479200469
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -162,4 +141,6 @@ MonoBehaviour:
   _detectionRange: 15
   _rotationSpeed: 5
   _ammo: {fileID: 9205379601952630962, guid: 50f5ffab8f16711468bfc317484f9fc4, type: 3}
-  _fireRate: 5
+  _fireRate: 1
+  _angleOffset: -90
+  _life: 3

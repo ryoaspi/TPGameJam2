@@ -155,11 +155,6 @@ Transform:
   - {fileID: 961556107}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &345229830 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6361016276127260, guid: 08d885be996f8634581340f03105fddb, type: 3}
-  m_PrefabInstance: {fileID: 7999603326021763694}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &345229835 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5666381891240754950, guid: 08d885be996f8634581340f03105fddb, type: 3}
@@ -230,37 +225,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 755034043307349119, guid: 51bc268638cfef34c903748cc9712072, type: 3}
-      propertyPath: _player
-      value: 
-      objectReference: {fileID: 345229835}
-    - target: {fileID: 755034043307349119, guid: 51bc268638cfef34c903748cc9712072, type: 3}
-      propertyPath: _enemyToActivate
-      value: 
-      objectReference: {fileID: 345229830}
-    - target: {fileID: 755034043307349119, guid: 51bc268638cfef34c903748cc9712072, type: 3}
-      propertyPath: _activationDistance
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 766162948610226938, guid: 51bc268638cfef34c903748cc9712072, type: 3}
       propertyPath: _player
       value: 
       objectReference: {fileID: 345229835}
-    - target: {fileID: 766162948610226938, guid: 51bc268638cfef34c903748cc9712072, type: 3}
-      propertyPath: _angleOffset
-      value: -90
-      objectReference: {fileID: 0}
     - target: {fileID: 3048103401888826592, guid: 51bc268638cfef34c903748cc9712072, type: 3}
       propertyPath: m_Name
       value: Tourelle
-      objectReference: {fileID: 0}
-    - target: {fileID: 3048103401888826592, guid: 51bc268638cfef34c903748cc9712072, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4567351166479200469, guid: 51bc268638cfef34c903748cc9712072, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9019095785638131507, guid: 51bc268638cfef34c903748cc9712072, type: 3}
       propertyPath: m_LocalPosition.x
@@ -302,8 +273,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 755034043307349119, guid: 51bc268638cfef34c903748cc9712072, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -568,11 +538,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1773525751945053574, guid: 4205d4b3dfaf24e4481c282924433964, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.05
+      value: 20.03
       objectReference: {fileID: 0}
     - target: {fileID: 1773525751945053574, guid: 4205d4b3dfaf24e4481c282924433964, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.5
+      value: 6.69
       objectReference: {fileID: 0}
     - target: {fileID: 1773525751945053574, guid: 4205d4b3dfaf24e4481c282924433964, type: 3}
       propertyPath: m_LocalPosition.z
@@ -610,6 +580,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy1Lent
       objectReference: {fileID: 0}
+    - target: {fileID: 7416576585417964946, guid: 4205d4b3dfaf24e4481c282924433964, type: 3}
+      propertyPath: _speed
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7416576585417964946, guid: 4205d4b3dfaf24e4481c282924433964, type: 3}
+      propertyPath: _waypoints.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7416576585417964946, guid: 4205d4b3dfaf24e4481c282924433964, type: 3}
+      propertyPath: '_waypoints.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1825922513}
+    - target: {fileID: 7416576585417964946, guid: 4205d4b3dfaf24e4481c282924433964, type: 3}
+      propertyPath: '_waypoints.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1390844928}
+    - target: {fileID: 7416576585417964946, guid: 4205d4b3dfaf24e4481c282924433964, type: 3}
+      propertyPath: '_waypoints.Array.data[2]'
+      value: 
+      objectReference: {fileID: 555084034}
+    - target: {fileID: 7416576585417964946, guid: 4205d4b3dfaf24e4481c282924433964, type: 3}
+      propertyPath: '_waypoints.Array.data[3]'
+      value: 
+      objectReference: {fileID: 911724139}
+    - target: {fileID: 7416576585417964946, guid: 4205d4b3dfaf24e4481c282924433964, type: 3}
+      propertyPath: '_waypoints.Array.data[4]'
+      value: 
+      objectReference: {fileID: 961556107}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class ShootEnemy : MonoBehaviour
@@ -14,11 +13,23 @@ public class ShootEnemy : MonoBehaviour
     {
         Move();
         ShootLivetime();
+        GetDamage();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Destroy(gameObject);
+    }
+
+    #endregion
+
+
+    #region Main Method
+
+    public int GetDamage()
+    {
+        int damage = _damage;
+        return damage;
     }
 
     #endregion
