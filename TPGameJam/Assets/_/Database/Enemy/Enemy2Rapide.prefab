@@ -100,10 +100,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb449b020c24ef941897e76fde4ebb23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 1.5
+  _speed: 3
   _move: {x: 0, y: 0, z: 0}
   _look: {x: 0, y: 0, z: 0}
-  _life: 3
+  _life: 1
   _player: {fileID: 0}
   _activationDistance: 5
-  _enemyToActivate: {fileID: 0}
+  _enemyToActivate: {fileID: 5596396914030727263}
+  _scoreValue: 0

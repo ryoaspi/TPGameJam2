@@ -106,4 +106,5 @@ MonoBehaviour:
   _life: 3
   _player: {fileID: 0}
   _activationDistance: 5
-  _enemyToActivate: {fileID: 0}
+  _enemyToActivate: {fileID: 3048103401888826592}
+  _scoreValue: 0
