@@ -26,23 +26,35 @@ public class EnemyMove : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.layer== LayerMask.NameToLayer("Ammo"))
-        {
-            Debug.Log("collision : " + other.name);
-            int damage = other.GetComponent<AmmoControle>().GetDamage();
-            _currentLife -= damage;            
-        }
-    }
+        //if (other.gameObject.layer== LayerMask.NameToLayer("Ammo"))
+        //{
+        //    Debug.Log("collision : " + other.name);
+        //    int damage = other.GetComponent<AmmoControle>().GetDamage();
+        //    _currentLife -= damage;            
+        //}
 
+        //if (other.GetComponent<AmmoControle>())
+        //{
+        //    Debug.Log("collision : " + other.name);
+        //    int damage = other.GetComponent<AmmoControle>().GetDamage();
+        //    _currentLife -= damage;
+        //}
+        
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            gameObject.SetActive(false);
+        }
         if (collision.gameObject.layer == LayerMask.NameToLayer("Ammo"))
         {
-            Debug.Log("collision : " + collision.gameObject.name);
             int damage = collision.gameObject.GetComponent<AmmoControle>().GetDamage();
             _currentLife -= damage;
         }
     }
+
+
     #endregion
 
 

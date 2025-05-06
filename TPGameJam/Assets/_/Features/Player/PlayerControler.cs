@@ -74,7 +74,7 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
 
     private void TargetMouse()
     {
-        transform.rotation = Quaternion.LookRotation(Vector3.forward, _look - transform.position);
+        transform.rotation = Quaternion.LookRotation(_look - transform.position, Vector3.forward);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
