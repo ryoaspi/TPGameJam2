@@ -69,7 +69,7 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
     private void Move()    
     {
        float speed = _speed * Time.deltaTime;
-        transform.position = new Vector3(transform.position.x + _speedBase +_move.x * speed, transform.position.y + _move.y * speed, 0);
+        transform.position = new Vector3(transform.position.x +_move.x * speed, transform.position.y - _gravity  + _move.y * speed, 0);
     }
 
     private void TargetMouse()
@@ -82,6 +82,11 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
         if (collision.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
         {
             gameObject.SetActive(false);
+        }
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        {
+            _life -= 1;
+
         }
     }
 
@@ -110,7 +115,8 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
 
     [SerializeField] private int _life = 4;
     [SerializeField] private float _speed = 1f;
-    [SerializeField]private PoolManager _poolManager;
+    [SerializeField] private PoolManager _poolManager;
+    [SerializeField] private float _gravity = 0.01f;
     
     private Vector2 _move;
     private Vector3 _look;

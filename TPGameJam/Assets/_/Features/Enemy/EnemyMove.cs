@@ -8,7 +8,7 @@ public class EnemyMove : MonoBehaviour
     void Start()
     {
         _currentLife = _life;
-        _score = FindObjectOfType<EnemyScore>();
+        //_score = FindObjectOfType<EnemyScore>();
     }
 
     
@@ -28,14 +28,24 @@ public class EnemyMove : MonoBehaviour
     {
         if (other.gameObject.layer== LayerMask.NameToLayer("Ammo"))
         {
+            Debug.Log("collision : " + other.name);
             int damage = other.GetComponent<AmmoControle>().GetDamage();
+            _currentLife -= damage;            
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Ammo"))
+        {
+            Debug.Log("collision : " + collision.gameObject.name);
+            int damage = collision.gameObject.GetComponent<AmmoControle>().GetDamage();
             _currentLife -= damage;
-            other.gameObject.SetActive(false); // désactive le projectile après collision
         }
     }
     #endregion
-    
-    
+
+
     #region Utils
 
     private void Move()
@@ -56,7 +66,7 @@ public class EnemyMove : MonoBehaviour
         if (_life <= 0)
         {
             _score.AddScore(_scoreValue);
-            gameObject.SetActive(false);
+            _enemyToActivate.SetActive(false);
         }
     }
     

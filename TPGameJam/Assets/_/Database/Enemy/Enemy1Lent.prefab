@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1773525751945053574}
   - component: {fileID: 7607818852307045680}
   - component: {fileID: 1522458974147116146}
-  - component: {fileID: 4046380966314643584}
+  - component: {fileID: 5697653637750408145}
   m_Layer: 9
   m_Name: Enemy1Lent
   m_TagString: Untagged
@@ -109,8 +109,8 @@ MonoBehaviour:
   _activationDistance: 5
   _enemyToActivate: {fileID: 2761401841739537566}
   _scoreValue: 0
---- !u!58 &4046380966314643584
-CircleCollider2D:
+--- !u!70 &5697653637750408145
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -144,4 +144,5 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 1.0000002
+  m_Size: {x: 1.0000002, y: 2.0000005}
+  m_Direction: 0

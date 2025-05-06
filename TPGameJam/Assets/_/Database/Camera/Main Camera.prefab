@@ -158,8 +158,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  _speed: 0.01
-  _loop: 1
+  _speed: 0.1
+  _loop: 0
 --- !u!61 &6624988770041816617
 BoxCollider2D:
   m_ObjectHideFlags: 0
