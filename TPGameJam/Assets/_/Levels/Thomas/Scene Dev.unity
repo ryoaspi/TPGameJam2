@@ -644,6 +644,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy1Lent
       objectReference: {fileID: 0}
+    - target: {fileID: 5697653637750408145, guid: 4205d4b3dfaf24e4481c282924433964, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7416576585417964946, guid: 4205d4b3dfaf24e4481c282924433964, type: 3}
+      propertyPath: _life
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7416576585417964946, guid: 4205d4b3dfaf24e4481c282924433964, type: 3}
       propertyPath: '_waypoints.Array.data[0]'
       value: 

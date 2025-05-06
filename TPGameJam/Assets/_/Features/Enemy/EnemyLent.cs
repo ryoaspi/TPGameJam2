@@ -19,17 +19,24 @@ public class EnemyLent : MonoBehaviour
     {        
         Move();
         TryShoot();
+   
+        
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
         if (collision.GetComponent<AmmoControle>())
         {
             CalculeDamage(collision.GetComponent<AmmoControle>());
         }
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        gameObject.SetActive(false);
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     #endregion
@@ -39,6 +46,7 @@ public class EnemyLent : MonoBehaviour
 
     private void Move()
     {
+        Debug.Log("Oui je bouge");
         if (_waypoints.Length == 0) return;
 
         Transform targetWaypoint = _waypoints[_currentWaypointIndex];
@@ -47,6 +55,7 @@ public class EnemyLent : MonoBehaviour
 
         if (Vector3.Distance(transform.position, targetWaypoint.position) < 0.1f)
         {
+            Debug.Log("En chemin");
             _currentWaypointIndex++;
 
             if (_currentWaypointIndex >= _waypoints.Length)
