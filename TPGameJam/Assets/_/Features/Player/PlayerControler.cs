@@ -36,7 +36,12 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
         Move();
         TargetMouse();
         UpdateMouseLook();
-             
+        
+        if (_isShooting && Time.time >= _nextFireTime)
+        {
+            Shoot();
+            _nextFireTime = Time.time + _fireRate;
+        }
         
     }
 
@@ -53,15 +58,17 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
 
     public void OnAttack(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Performed)
+        if (context.phase == InputActionPhase.Started)
         {
-            var shootOne = _poolManager.GetFirstAvailableProjectile();
-            shootOne.transform.position = transform.position;
-            shootOne.transform.rotation = transform.rotation;
-            shootOne.SetActive(true);
+            _isShooting = true;
         }
-
+        if (context.phase == InputActionPhase.Canceled)
+        {
+            _isShooting = false;
+        }
     }
+
+
 
     public void OnShield(InputAction.CallbackContext context)
     {
@@ -108,7 +115,8 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
         if (collision.gameObject.layer == LayerMask.NameToLayer("Obstacle") || collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
             gameObject.SetActive(false);
-            _currentLife = 0;
+            _lifeUI.TakeDamage(_currentLife);
+            _currentLife = 0;            
         }
         if (collision.gameObject.layer == LayerMask.NameToLayer("Health"))
         {
@@ -125,6 +133,14 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
             CalculeLife(collision.GetComponent<ShootEnemy>());
         }
 
+    }
+
+    private void Shoot()
+    {
+        var shootOne = _poolManager.GetFirstAvailableProjectile();
+        shootOne.transform.position = transform.position;
+        shootOne.transform.rotation = transform.rotation;
+        shootOne.SetActive(true);
     }
 
     private void CalculeLife(ShootEnemy shoot)
@@ -156,8 +172,6 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
         
     }
 
-
-
     #endregion
 
 
@@ -168,11 +182,14 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
     [SerializeField] private float _speed = 1f;
     [SerializeField] private PoolManager _poolManager;
     [SerializeField] private float _gravity = 0.01f;
+    [SerializeField] private float _fireRate = 0.2f;
     
     private Vector2 _move;
     private Vector3 _look;
     private InputPlayer.InputPlayer _playerInput;
     private int _currentLife;
+    private bool _isShooting = false;
+    private float _nextFireTime = 0f;
     
 
     #endregion
