@@ -117,8 +117,7 @@ public class EnemyLent : MonoBehaviour
 
     [SerializeField] private Transform[] _waypoints;
     [SerializeField] private float _speed;
-    [SerializeField] private bool _loop = true;
-
+   
     private int _currentWaypointIndex = 0;
     private int _direction = 1;
 

@@ -57,12 +57,12 @@ namespace InputPlayer
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Interact"",
+                    ""name"": ""Shield"",
                     ""type"": ""Button"",
-                    ""id"": ""852140f2-7766-474d-8707-702459ba45f3"",
+                    ""id"": ""eebb0ccd-65ad-4124-98e6-e014bae4be4d"",
                     ""expectedControlType"": """",
                     ""processors"": """",
-                    ""interactions"": ""Hold"",
+                    ""interactions"": """",
                     ""initialStateCheck"": false
                 }
             ],
@@ -300,23 +300,23 @@ namespace InputPlayer
                 },
                 {
                     ""name"": """",
-                    ""id"": ""1c04ea5f-b012-41d1-a6f7-02e963b52893"",
-                    ""path"": ""<Keyboard>/e"",
+                    ""id"": ""32e08def-9b05-43fe-bad7-c65dfbc1dac8"",
+                    ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Interact"",
+                    ""groups"": """",
+                    ""action"": ""Shield"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""b3f66d0b-7751-423f-908b-a11c5bd95930"",
-                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""id"": ""e8e2cfe4-3396-4b3a-a409-6553057b2389"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Interact"",
+                    ""groups"": """",
+                    ""action"": ""Shield"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -907,7 +907,7 @@ namespace InputPlayer
             m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
             m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
             m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
-            m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
+            m_Player_Shield = m_Player.FindAction("Shield", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -990,7 +990,7 @@ namespace InputPlayer
         private readonly InputAction m_Player_Move;
         private readonly InputAction m_Player_Look;
         private readonly InputAction m_Player_Attack;
-        private readonly InputAction m_Player_Interact;
+        private readonly InputAction m_Player_Shield;
         public struct PlayerActions
         {
             private @InputPlayer m_Wrapper;
@@ -998,7 +998,7 @@ namespace InputPlayer
             public InputAction @Move => m_Wrapper.m_Player_Move;
             public InputAction @Look => m_Wrapper.m_Player_Look;
             public InputAction @Attack => m_Wrapper.m_Player_Attack;
-            public InputAction @Interact => m_Wrapper.m_Player_Interact;
+            public InputAction @Shield => m_Wrapper.m_Player_Shield;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -1017,9 +1017,9 @@ namespace InputPlayer
                 @Attack.started += instance.OnAttack;
                 @Attack.performed += instance.OnAttack;
                 @Attack.canceled += instance.OnAttack;
-                @Interact.started += instance.OnInteract;
-                @Interact.performed += instance.OnInteract;
-                @Interact.canceled += instance.OnInteract;
+                @Shield.started += instance.OnShield;
+                @Shield.performed += instance.OnShield;
+                @Shield.canceled += instance.OnShield;
             }
 
             private void UnregisterCallbacks(IPlayerActions instance)
@@ -1033,9 +1033,9 @@ namespace InputPlayer
                 @Attack.started -= instance.OnAttack;
                 @Attack.performed -= instance.OnAttack;
                 @Attack.canceled -= instance.OnAttack;
-                @Interact.started -= instance.OnInteract;
-                @Interact.performed -= instance.OnInteract;
-                @Interact.canceled -= instance.OnInteract;
+                @Shield.started -= instance.OnShield;
+                @Shield.performed -= instance.OnShield;
+                @Shield.canceled -= instance.OnShield;
             }
 
             public void RemoveCallbacks(IPlayerActions instance)
@@ -1221,7 +1221,7 @@ namespace InputPlayer
             void OnMove(InputAction.CallbackContext context);
             void OnLook(InputAction.CallbackContext context);
             void OnAttack(InputAction.CallbackContext context);
-            void OnInteract(InputAction.CallbackContext context);
+            void OnShield(InputAction.CallbackContext context);
         }
         public interface IUIActions
         {

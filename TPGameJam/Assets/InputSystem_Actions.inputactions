@@ -33,12 +33,12 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Interact",
+                    "name": "Shield",
                     "type": "Button",
-                    "id": "852140f2-7766-474d-8707-702459ba45f3",
+                    "id": "eebb0ccd-65ad-4124-98e6-e014bae4be4d",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": "Hold",
+                    "interactions": "",
                     "initialStateCheck": false
                 }
             ],
@@ -276,23 +276,23 @@
                 },
                 {
                     "name": "",
-                    "id": "1c04ea5f-b012-41d1-a6f7-02e963b52893",
-                    "path": "<Keyboard>/e",
+                    "id": "32e08def-9b05-43fe-bad7-c65dfbc1dac8",
+                    "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "Interact",
+                    "groups": "",
+                    "action": "Shield",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "b3f66d0b-7751-423f-908b-a11c5bd95930",
-                    "path": "<Gamepad>/buttonNorth",
+                    "id": "e8e2cfe4-3396-4b3a-a409-6553057b2389",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Interact",
+                    "groups": "",
+                    "action": "Shield",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

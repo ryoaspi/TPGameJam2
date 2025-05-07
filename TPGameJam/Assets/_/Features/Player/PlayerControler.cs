@@ -43,11 +43,6 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
         _move = context.ReadValue<Vector2>();        
     }
 
-    public void OnLook(InputAction.CallbackContext context)
-    {
-        
-    }
-
     public void OnAttack(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Performed)
@@ -60,16 +55,6 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
 
     }
 
-    public void OnInteract(InputAction.CallbackContext context)
-    {
-        
-    }
-
-    #endregion
-    
-    
-    #region Main Methods
-    
     public void TakeDamage(int amount)
     {
         _life -= amount;
@@ -82,7 +67,7 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
         _life += amount;
         _lifeUI.Heal(amount);
     }
-    
+
     #endregion
 
 
@@ -143,6 +128,16 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
           float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
           transform.rotation = Quaternion.Euler(0, 0, angle - 90);
         
+    }
+
+    public void OnShield(InputAction.CallbackContext context)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnLook(InputAction.CallbackContext context)
+    {
+        throw new System.NotImplementedException();
     }
 
     #endregion
