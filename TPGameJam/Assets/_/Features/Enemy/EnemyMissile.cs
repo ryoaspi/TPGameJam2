@@ -70,12 +70,12 @@ public class EnemyMissile : MonoBehaviour
     [Header("D�tection")]
     [SerializeField] private Transform _player;
     [SerializeField] private float _detectionRange = 15f;
-    [SerializeField] private float _rotationSpeed = 5f;
+    //[SerializeField] private float _rotationSpeed = 5f;
     [SerializeField] private float _angleOffset = -90f;
 
-    [Header("vie")]
-    [SerializeField] private int _life = 3;
-    private int _currentLife;
+    //[Header("vie")]
+    //[SerializeField] private int _life = 3;
+    //private int _currentLife;
 
     [Header("Vitesse")]
     [SerializeField] private float _speed = 2f;
