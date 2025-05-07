@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 5697653637750408145}
   - component: {fileID: 7416576585417964946}
   m_Layer: 9
-  m_Name: Enemy1Lent
+  m_Name: Croiseur
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

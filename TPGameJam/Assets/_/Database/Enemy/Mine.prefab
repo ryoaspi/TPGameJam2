@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6457225854780046577}
   - component: {fileID: 1592764100383799804}
   m_Layer: 9
-  m_Name: Enemy2Rapide
+  m_Name: Mine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
