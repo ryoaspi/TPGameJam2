@@ -20,6 +20,7 @@ public class EnemyTurrel : MonoBehaviour
             TryShoot();
            
         }
+                
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

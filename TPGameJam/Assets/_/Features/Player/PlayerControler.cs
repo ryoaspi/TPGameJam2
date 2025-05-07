@@ -16,13 +16,15 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
     {
         _playerInput = new InputPlayer.InputPlayer();
         _playerInput.Player.SetCallbacks(this);
+        
     }
 
     private void OnEnable()
     {
         _playerInput.Enable();
         _lifeUI.SetInitialLife(_life);
-        _currentLife = _life;                
+        _currentLife = _life;
+        
                 
     }
     private void OnDisable()
@@ -30,14 +32,46 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
         _playerInput.Disable();
     }
 
-    
+    private void Start()
+    {
+        _coolDownCount = 0;
+        _timeShieldCount = 0;
+        _active = false;
+        _shield.SetActive(false);
+    }
+
+
     void Update()
     {        
         Move();
         TargetMouse();
         UpdateMouseLook();
-             
         
+        if (_isShooting && Time.time >= _nextFireTime)
+        {
+            Shoot();
+            _nextFireTime = Time.time + _fireRate;
+        }
+
+        if (_active== true)
+        {
+            if (_timeShieldCount > 0)
+            {
+                _timeShieldCount -= Time.deltaTime;
+            }
+            else
+            {
+                DeactiveShield(); // Désactiver automatiquement
+            }
+        }
+        else
+        {
+            if (_coolDownCount > 0)
+            {
+                _coolDownCount -= Time.deltaTime;
+            }
+        }
+
     }
 
     #endregion
@@ -53,20 +87,32 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
 
     public void OnAttack(InputAction.CallbackContext context)
     {
+        if (context.phase == InputActionPhase.Started)
+        {
+            _isShooting = true;
+        }
+        if (context.phase == InputActionPhase.Canceled)
+        {
+            _isShooting = false;
+        }
+    }
+
+
+
+    public void OnShield(InputAction.CallbackContext context)
+    {
+       
         if (context.phase == InputActionPhase.Performed)
         {
-            var shootOne = _poolManager.GetFirstAvailableProjectile();
-            shootOne.transform.position = transform.position;
-            shootOne.transform.rotation = transform.rotation;
-            shootOne.SetActive(true);
+            if (!_active && _coolDownCount <= 0)
+            {
+                ActifShield();
+            }
         }
 
     }
 
-    public void OnShield(InputAction.CallbackContext context)
-    {
-        
-    }
+    
 
     public void OnLook(InputAction.CallbackContext context)
     {
@@ -108,7 +154,8 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
         if (collision.gameObject.layer == LayerMask.NameToLayer("Obstacle") || collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
             gameObject.SetActive(false);
-            _currentLife = 0;
+            _lifeUI.TakeDamage(_currentLife);
+            _currentLife = 0;            
         }
         if (collision.gameObject.layer == LayerMask.NameToLayer("Health"))
         {
@@ -127,23 +174,35 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
 
     }
 
+    private void Shoot()
+    {
+        var shootOne = _poolManager.GetFirstAvailableProjectile();
+        shootOne.transform.position = transform.position;
+        shootOne.transform.rotation = transform.rotation;
+        shootOne.SetActive(true);
+    }
+
     private void CalculeLife(ShootEnemy shoot)
     {
-        int damage = shoot.GetDamage();
-        _currentLife -= damage;
-        // Met à jour l'UI manuellement
-        if (_lifeUI != null)
+        if (_active == false) 
         {
-            for (int i = 0; i < damage; i++)
+            int damage = shoot.GetDamage();
+            _currentLife -= damage;
+            // Met à jour l'UI manuellement
+            if (_lifeUI != null)
             {
-                _lifeUI.TakeDamage(1);
+                for (int i = 0; i < damage; i++)
+                {
+                    _lifeUI.TakeDamage(1);
+                }
+            }
+            if (_currentLife <= 0)
+            {
+                gameObject.SetActive(false);
+                _currentLife = _life;
             }
         }
-        if (_currentLife <= 0)
-        {
-            gameObject.SetActive(false);
-            _currentLife = _life;
-        }
+        
     }
 
     private void UpdateMouseLook()
@@ -155,8 +214,21 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
           transform.rotation = Quaternion.Euler(0, 0, angle - 90);
         
     }
+    private void DeactiveShield()
+    {
+        Debug.Log("Bouclier désactiver");
+        _active = false;
+        _timeShieldCount = _timeShield;
+        _shield.gameObject.SetActive(false);
+    }
 
-
+    private void ActifShield()
+    {
+        Debug.Log("Bouclier activer");
+        _active = true;
+        _coolDownCount = _coolDown;
+        _shield.gameObject.SetActive(true);
+    }
 
     #endregion
 
@@ -168,11 +240,23 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
     [SerializeField] private float _speed = 1f;
     [SerializeField] private PoolManager _poolManager;
     [SerializeField] private float _gravity = 0.01f;
+    [SerializeField] private float _fireRate = 0.2f;
+
+    [Header("bouclier")]
+    [SerializeField] private GameObject _shield;
+    [SerializeField] private float _timeShield = 2f;
+    [SerializeField] private float _coolDown = 5;
+    private bool _active = false;
+    private float _coolDownCount;
+    private float _timeShieldCount;
+
     
     private Vector2 _move;
     private Vector3 _look;
     private InputPlayer.InputPlayer _playerInput;
     private int _currentLife;
+    private bool _isShooting = false;
+    private float _nextFireTime = 0f;
     
 
     #endregion

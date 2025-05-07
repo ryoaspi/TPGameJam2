@@ -303,22 +303,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tourelle
       objectReference: {fileID: 0}
-    - target: {fileID: 3525969667748894978, guid: 51bc268638cfef34c903748cc9712072, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -5127685585226851663, guid: bc4fc428ab4e3ee42ad1dfe2467c5257, type: 3}
-    - target: {fileID: 4567351166479200469, guid: 51bc268638cfef34c903748cc9712072, type: 3}
-      propertyPath: m_Radius
-      value: 1.1160676
-      objectReference: {fileID: 0}
-    - target: {fileID: 4567351166479200469, guid: 51bc268638cfef34c903748cc9712072, type: 3}
-      propertyPath: m_Offset.x
-      value: -0.00000008000891
-      objectReference: {fileID: 0}
-    - target: {fileID: 4567351166479200469, guid: 51bc268638cfef34c903748cc9712072, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.6711635
-      objectReference: {fileID: 0}
     - target: {fileID: 9019095785638131507, guid: 51bc268638cfef34c903748cc9712072, type: 3}
       propertyPath: m_LocalPosition.x
       value: 34.47
@@ -436,11 +420,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3848419830427352334, guid: 28b413d2992110b4caa08518b3742f4b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 46.47
+      value: -8.5
       objectReference: {fileID: 0}
     - target: {fileID: 3848419830427352334, guid: 28b413d2992110b4caa08518b3742f4b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.69
+      value: -3.6
       objectReference: {fileID: 0}
     - target: {fileID: 3848419830427352334, guid: 28b413d2992110b4caa08518b3742f4b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -482,6 +466,10 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 345229835}
+    - target: {fileID: 7431316192695251285, guid: 28b413d2992110b4caa08518b3742f4b, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -633,6 +621,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 311807841}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1004795570 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1867820084500589719, guid: 08d885be996f8634581340f03105fddb, type: 3}
+  m_PrefabInstance: {fileID: 7999603326021763694}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1091721290 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6016484711660746168, guid: 99decdc2c687d754b9a79b631b596146, type: 3}
@@ -1247,6 +1240,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -9163658017578767287, guid: 08d885be996f8634581340f03105fddb, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 2.86
+      objectReference: {fileID: 0}
+    - target: {fileID: -9163658017578767287, guid: 08d885be996f8634581340f03105fddb, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 5.12
+      objectReference: {fileID: 0}
     - target: {fileID: 6361016276127260, guid: 08d885be996f8634581340f03105fddb, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1259,6 +1260,18 @@ PrefabInstance:
       propertyPath: _lifeUI
       value: 
       objectReference: {fileID: 1749198899}
+    - target: {fileID: 3476084629278492660, guid: 08d885be996f8634581340f03105fddb, type: 3}
+      propertyPath: _shield
+      value: 
+      objectReference: {fileID: 1004795570}
+    - target: {fileID: 3476084629278492660, guid: 08d885be996f8634581340f03105fddb, type: 3}
+      propertyPath: m_lifeUI
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3476084629278492660, guid: 08d885be996f8634581340f03105fddb, type: 3}
+      propertyPath: _fireRate
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 3476084629278492660, guid: 08d885be996f8634581340f03105fddb, type: 3}
       propertyPath: _poolManager
       value: 
