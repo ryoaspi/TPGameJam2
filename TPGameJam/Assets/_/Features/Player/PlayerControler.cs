@@ -55,6 +55,16 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
 
     }
 
+    public void OnShield(InputAction.CallbackContext context)
+    {
+        
+    }
+
+    public void OnLook(InputAction.CallbackContext context)
+    {
+        
+    }
+
     public void TakeDamage(int amount)
     {
         _life -= amount;
@@ -90,6 +100,10 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
         {
             gameObject.SetActive(false);
         }
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Health"))
+        {
+            _currentLife++;           
+        }
 
     }
 
@@ -99,6 +113,7 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
         {
             CalculeLife(collision.GetComponent<ShootEnemy>());
         }
+
     }
 
     private void CalculeLife(ShootEnemy shoot)
@@ -130,15 +145,7 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
         
     }
 
-    public void OnShield(InputAction.CallbackContext context)
-    {
-        throw new System.NotImplementedException();
-    }
 
-    public void OnLook(InputAction.CallbackContext context)
-    {
-        throw new System.NotImplementedException();
-    }
 
     #endregion
 
