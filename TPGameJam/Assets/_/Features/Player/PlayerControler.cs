@@ -4,6 +4,12 @@ using UnityEngine.InputSystem;
 
 public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerActions
 {
+    #region Publics
+
+   
+    #endregion
+
+
     #region Api Unity
 
     void Awake()
@@ -16,8 +22,8 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
     {
         _playerInput.Enable();
         _lifeUI.SetInitialLife(_life);
-        _currentLife = _life;
-        
+        _currentLife = _life;                
+                
     }
     private void OnDisable()
     {
@@ -29,7 +35,9 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
     {        
         Move();
         TargetMouse();
-        UpdateMouseLook();        
+        UpdateMouseLook();
+             
+        
     }
 
     #endregion
@@ -74,6 +82,7 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
 
     public void Heal(int amount)
     {
+        
         _life += amount;
         _lifeUI.Heal(amount);
     }
@@ -99,9 +108,11 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
         if (collision.gameObject.layer == LayerMask.NameToLayer("Obstacle") || collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
             gameObject.SetActive(false);
+            _currentLife = 0;
         }
         if (collision.gameObject.layer == LayerMask.NameToLayer("Health"))
         {
+            _lifeUI.Heal(1);
             _currentLife++;           
         }
 

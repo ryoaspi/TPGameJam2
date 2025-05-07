@@ -103,7 +103,7 @@ public class EnemyTurrel : MonoBehaviour
     [SerializeField] private GameObject _ammo;
     [SerializeField] private float _fireRate = 1f; // Tir par seconde
     private float _fireCooldown = 0f;
-    [SerializeField] private float _angleOffset = -45f;
+    [SerializeField] private float _angleOffset = -90;
 
     [Header("vie")]
     [SerializeField] private int _life = 3;

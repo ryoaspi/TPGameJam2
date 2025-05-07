@@ -6,17 +6,21 @@ public class PlayerLifeUI : MonoBehaviour
 {
     #region Api Unity
     void Start()
-    {
-        _currentLife = _maxLife;
+    {        
+        _currentLife = _maxLife;        
         GenerateLifeUI();
+    }
+
+    private void Update()
+    {
         UpdateLifeDisplay();
     }
-    
+
     #endregion
-    
-    
+
+
     #region Main Methods
-    
+
     public void SetInitialLife(int maxLife)
     {
         _maxLife = maxLife;
@@ -43,6 +47,7 @@ public class PlayerLifeUI : MonoBehaviour
         _currentLife += amount;
         _currentLife = Mathf.Min(_maxLife, _currentLife);
         UpdateLifeDisplay();
+
     }
     
     #endregion
@@ -77,6 +82,8 @@ public class PlayerLifeUI : MonoBehaviour
     [SerializeField] private int _maxLife = 3;
     private List<Image> _lifeRects = new List<Image>();
     private int _currentLife;
+
+    [SerializeField] private GameObject _playerLife;
 
 
     #endregion

@@ -9,6 +9,7 @@ public class EnemyLent : MonoBehaviour
         if (_waypoints.Length == 0)
         {            
             Debug.Log("Pas de waypoints assignés !");
+            return;
         }
 
         _currentWaypointIndex = 0;
@@ -16,11 +17,19 @@ public class EnemyLent : MonoBehaviour
     }
    
     void Update()
-    {        
-        Move();
-        TryShoot();
-   
-        
+    {
+        if (!_player) return;
+
+        float distance = Vector3.Distance(transform.position, _player.position);
+
+        if (distance <= _detectionRange)
+        {
+            
+            RotateTowardPlayer();
+            Move();
+            TryShoot();
+
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -51,6 +60,8 @@ public class EnemyLent : MonoBehaviour
         {
             return;
         }
+
+        Debug.Log("je bouge");
                
         // Forcer la position Z à 0 avant le déplacement
         transform.position = new Vector3(transform.position.x, transform.position.y, 0);
@@ -64,6 +75,7 @@ public class EnemyLent : MonoBehaviour
         // Si l'ennemi est proche du waypoint
         if (Vector3.Distance(transform.position, targetWaypoint.position) < 0.1f)
         {
+            Debug.Log("En chemin");
             // Mise à jour de l'index du waypoint
             _currentWaypointIndex += _direction;
 
@@ -106,21 +118,45 @@ public class EnemyLent : MonoBehaviour
             _currentLife = _life;
         }
     }
+    private void RotateTowardPlayer()
+    {
+        Vector3 direction = (_player.position - transform.position).normalized;
+
+        // Calcul de l'angle sur le plan Z (dans l'espace local)
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+        //Applique l'offet pour compenser l'orientation initiale
+        angle += _angleOffset;
+
+        // On garde uniquement la rotation Z (pitch), on ignore x et y
+        float currentZ = transform.eulerAngles.z;
+        float newZ = Mathf.LerpAngle(currentZ, angle, _rotationSpeed * Time.deltaTime);
+
+        transform.rotation = Quaternion.Euler(0f, 0f, newZ);
+    }
 
     #endregion
 
 
     #region Private And Protected
 
+    [Header("Déplacement")]
     [SerializeField] private Transform[] _waypoints;
     [SerializeField] private float _speed;
    
     private int _currentWaypointIndex = 0;
     private int _direction = 1;
 
+    [Header("Détection")]
+    [SerializeField] private Transform _player;
+    [SerializeField] private float _detectionRange = 15;
+    [SerializeField] private float _rotationSpeed = 5f;
+
+
     [Header("Tir")]
     [SerializeField] private GameObject _ammo;
     [SerializeField] private float _fireRate = 1f; // Tir par seconde
+    [SerializeField] private float _angleOffset = -90f;
     private float _fireCooldown = 0f;
     
     [Header("vie")]
