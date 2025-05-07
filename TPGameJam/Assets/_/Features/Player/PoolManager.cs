@@ -11,8 +11,7 @@ public class PoolManager : MonoBehaviour
     {
         if (_projectilePrefab == null)
         {
-            Debug.LogError("Projectile  prefab is not assigned", this);
-            return; 
+                        return; 
         }
         for (int i = 0; i < _poolsize; i++)
         {

@@ -18,7 +18,7 @@ public class AmmoControle : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Collision");
+        
         gameObject.SetActive(false);
     }
 

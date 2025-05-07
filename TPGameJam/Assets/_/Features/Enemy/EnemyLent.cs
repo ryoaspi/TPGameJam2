@@ -51,10 +51,7 @@ public class EnemyLent : MonoBehaviour
         {
             return;
         }
-
-        // Afficher le message chaque fois que le mouvement est mis à jour
-        Debug.Log("Oui je bouge");
-
+               
         // Forcer la position Z à 0 avant le déplacement
         transform.position = new Vector3(transform.position.x, transform.position.y, 0);
 
