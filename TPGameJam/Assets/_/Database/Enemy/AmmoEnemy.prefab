@@ -150,7 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ammo: {fileID: 9205379601952630962}
   _damage: 1
-  _speed: 20
+  _speed: 30
   _maxTime: 3
 --- !u!50 &1833995723901015000
 Rigidbody2D:
