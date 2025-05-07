@@ -22,7 +22,8 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
     {
         _playerInput.Enable();
         _lifeUI.SetInitialLife(_life);
-        _currentLife = _life;                
+        _currentLife = _life;
+        _coolDownCount = 0;
                 
     }
     private void OnDisable()
@@ -41,6 +42,11 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
         {
             Shoot();
             _nextFireTime = Time.time + _fireRate;
+        }
+
+        if (_coolDownCount > 0)
+        {
+            _coolDownCount -= Time.deltaTime;
         }
         
     }
@@ -72,7 +78,23 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
 
     public void OnShield(InputAction.CallbackContext context)
     {
-        
+        Debug.Log("Action détecté");
+        Debug.Log(_coolDownCount);
+        if (_active == false && _coolDownCount == 0)
+        {
+            Debug.Log("Bouclier activer");
+            _active = true;
+            _coolDownCount = _coolDown;
+            _shield.gameObject.SetActive(true);
+            _timeShieldCount -= Time.deltaTime;
+        }
+        if (_active == true && _timeShieldCount == 0)
+        {
+            Debug.Log("Bouclier désactiver");
+            _active = false;
+            _timeShieldCount = _timeShield;
+            _shield.gameObject.SetActive(false);
+        }
     }
 
     public void OnLook(InputAction.CallbackContext context)
@@ -183,6 +205,15 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
     [SerializeField] private PoolManager _poolManager;
     [SerializeField] private float _gravity = 0.01f;
     [SerializeField] private float _fireRate = 0.2f;
+
+    [Header("bouclier")]
+    [SerializeField] private GameObject _shield;
+    [SerializeField] private float _timeShield = 2f;
+    [SerializeField] private float _coolDown = 5;
+    private bool _active = false;
+    private float _coolDownCount;
+    private float _timeShieldCount;
+
     
     private Vector2 _move;
     private Vector3 _look;

@@ -40,11 +40,18 @@ public class EnemyMissile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        gameObject.SetActive(false);
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Player") || collision.gameObject.layer == LayerMask.NameToLayer("Obstacle") )
+        {
+            gameObject.SetActive(false);
+
+        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        gameObject.SetActive(false);
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Player") || collision.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
+        {
+            gameObject.SetActive(false);
+        }
     }
     #endregion
 

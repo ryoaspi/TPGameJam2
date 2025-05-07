@@ -420,11 +420,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3848419830427352334, guid: 28b413d2992110b4caa08518b3742f4b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 46.47
+      value: -8.5
       objectReference: {fileID: 0}
     - target: {fileID: 3848419830427352334, guid: 28b413d2992110b4caa08518b3742f4b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.69
+      value: -3.6
       objectReference: {fileID: 0}
     - target: {fileID: 3848419830427352334, guid: 28b413d2992110b4caa08518b3742f4b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -466,6 +466,10 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 345229835}
+    - target: {fileID: 7431316192695251285, guid: 28b413d2992110b4caa08518b3742f4b, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -617,6 +621,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 311807841}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1004795570 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1867820084500589719, guid: 08d885be996f8634581340f03105fddb, type: 3}
+  m_PrefabInstance: {fileID: 7999603326021763694}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1091721290 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6016484711660746168, guid: 99decdc2c687d754b9a79b631b596146, type: 3}
@@ -1252,8 +1261,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1749198899}
     - target: {fileID: 3476084629278492660, guid: 08d885be996f8634581340f03105fddb, type: 3}
+      propertyPath: _shield
+      value: 
+      objectReference: {fileID: 1004795570}
+    - target: {fileID: 3476084629278492660, guid: 08d885be996f8634581340f03105fddb, type: 3}
       propertyPath: m_lifeUI
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3476084629278492660, guid: 08d885be996f8634581340f03105fddb, type: 3}
+      propertyPath: _fireRate
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 3476084629278492660, guid: 08d885be996f8634581340f03105fddb, type: 3}
       propertyPath: _poolManager
