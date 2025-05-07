@@ -44,9 +44,13 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
             _nextFireTime = Time.time + _fireRate;
         }
 
-        if (_coolDownCount > 0)
+        if (_active == false && _coolDownCount > 0)
         {
             _coolDownCount -= Time.deltaTime;
+        }
+        if (_active == true && _timeShieldCount > 0)
+        {
+            _timeShieldCount -= Time.deltaTime;
         }
         
     }

@@ -196,7 +196,7 @@ GameObject:
   - component: {fileID: 1191534128562486772}
   - component: {fileID: 5852396172099434026}
   - component: {fileID: 5360842834190845654}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -213,7 +213,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 6.595, y: 6.595, z: 6.595}
+  m_LocalScale: {x: 6, y: 6, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5666381891240754950}
@@ -303,7 +303,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
