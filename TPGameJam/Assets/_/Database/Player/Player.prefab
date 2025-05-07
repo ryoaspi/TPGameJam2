@@ -109,7 +109,7 @@ MonoBehaviour:
   _poolManager: {fileID: 0}
   _gravity: 0.01
   _fireRate: 0.2
-  _shield: {fileID: 0}
+  _shield: {fileID: 1867820084500589719}
   _timeShield: 2
   _coolDown: 5
 --- !u!61 &-9163658017578767287

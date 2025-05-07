@@ -16,6 +16,7 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
     {
         _playerInput = new InputPlayer.InputPlayer();
         _playerInput.Player.SetCallbacks(this);
+        
     }
 
     private void OnEnable()
@@ -23,7 +24,7 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
         _playerInput.Enable();
         _lifeUI.SetInitialLife(_life);
         _currentLife = _life;
-        _coolDownCount = 0;
+        
                 
     }
     private void OnDisable()
@@ -31,7 +32,15 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
         _playerInput.Disable();
     }
 
-    
+    private void Start()
+    {
+        _coolDownCount = 0;
+        _timeShieldCount = 0;
+        _active = false;
+        _shield.SetActive(false);
+    }
+
+
     void Update()
     {        
         Move();
@@ -44,15 +53,25 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
             _nextFireTime = Time.time + _fireRate;
         }
 
-        if (_active == false && _coolDownCount > 0)
+        if (_active== true)
         {
-            _coolDownCount -= Time.deltaTime;
+            if (_timeShieldCount > 0)
+            {
+                _timeShieldCount -= Time.deltaTime;
+            }
+            else
+            {
+                DeactiveShield(); // Désactiver automatiquement
+            }
         }
-        if (_active == true && _timeShieldCount > 0)
+        else
         {
-            _timeShieldCount -= Time.deltaTime;
+            if (_coolDownCount > 0)
+            {
+                _coolDownCount -= Time.deltaTime;
+            }
         }
-        
+
     }
 
     #endregion
@@ -82,24 +101,18 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
 
     public void OnShield(InputAction.CallbackContext context)
     {
-        Debug.Log("Action détecté");
-        Debug.Log(_coolDownCount);
-        if (_active == false && _coolDownCount == 0)
+       
+        if (context.phase == InputActionPhase.Performed)
         {
-            Debug.Log("Bouclier activer");
-            _active = true;
-            _coolDownCount = _coolDown;
-            _shield.gameObject.SetActive(true);
-            _timeShieldCount -= Time.deltaTime;
+            if (!_active && _coolDownCount <= 0)
+            {
+                ActifShield();
+            }
         }
-        if (_active == true && _timeShieldCount == 0)
-        {
-            Debug.Log("Bouclier désactiver");
-            _active = false;
-            _timeShieldCount = _timeShield;
-            _shield.gameObject.SetActive(false);
-        }
+
     }
+
+    
 
     public void OnLook(InputAction.CallbackContext context)
     {
@@ -171,21 +184,25 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
 
     private void CalculeLife(ShootEnemy shoot)
     {
-        int damage = shoot.GetDamage();
-        _currentLife -= damage;
-        // Met à jour l'UI manuellement
-        if (_lifeUI != null)
+        if (_active == false) 
         {
-            for (int i = 0; i < damage; i++)
+            int damage = shoot.GetDamage();
+            _currentLife -= damage;
+            // Met à jour l'UI manuellement
+            if (_lifeUI != null)
             {
-                _lifeUI.TakeDamage(1);
+                for (int i = 0; i < damage; i++)
+                {
+                    _lifeUI.TakeDamage(1);
+                }
+            }
+            if (_currentLife <= 0)
+            {
+                gameObject.SetActive(false);
+                _currentLife = _life;
             }
         }
-        if (_currentLife <= 0)
-        {
-            gameObject.SetActive(false);
-            _currentLife = _life;
-        }
+        
     }
 
     private void UpdateMouseLook()
@@ -196,6 +213,21 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
           float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
           transform.rotation = Quaternion.Euler(0, 0, angle - 90);
         
+    }
+    private void DeactiveShield()
+    {
+        Debug.Log("Bouclier désactiver");
+        _active = false;
+        _timeShieldCount = _timeShield;
+        _shield.gameObject.SetActive(false);
+    }
+
+    private void ActifShield()
+    {
+        Debug.Log("Bouclier activer");
+        _active = true;
+        _coolDownCount = _coolDown;
+        _shield.gameObject.SetActive(true);
     }
 
     #endregion
