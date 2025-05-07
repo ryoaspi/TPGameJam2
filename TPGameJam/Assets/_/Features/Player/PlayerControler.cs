@@ -200,6 +200,7 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
             {
                 gameObject.SetActive(false);
                 _currentLife = _life;
+
             }
         }
         
@@ -251,7 +252,8 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
     private float _coolDownCount;
     private float _timeShieldCount;
 
-    
+    [Header("Ecran GameOver")]
+        
     private Vector2 _move;
     private Vector3 _look;
     private InputPlayer.InputPlayer _playerInput;

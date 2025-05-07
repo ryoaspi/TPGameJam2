@@ -8,7 +8,7 @@ public class EnemyLent : MonoBehaviour
     {
         if (_waypoints.Length == 0)
         {            
-            Debug.Log("Pas de waypoints assignés !");
+            
             return;
         }
 
@@ -61,8 +61,7 @@ public class EnemyLent : MonoBehaviour
             return;
         }
 
-        Debug.Log("je bouge");
-               
+                       
         // Forcer la position Z à 0 avant le déplacement
         transform.position = new Vector3(transform.position.x, transform.position.y, 0);
 
@@ -75,7 +74,7 @@ public class EnemyLent : MonoBehaviour
         // Si l'ennemi est proche du waypoint
         if (Vector3.Distance(transform.position, targetWaypoint.position) < 0.1f)
         {
-            Debug.Log("En chemin");
+            
             // Mise à jour de l'index du waypoint
             _currentWaypointIndex += _direction;
 
