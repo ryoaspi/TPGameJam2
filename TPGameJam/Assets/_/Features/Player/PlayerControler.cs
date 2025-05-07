@@ -226,6 +226,7 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
     {
         Debug.Log("Bouclier activer");
         _active = true;
+        _timeShieldCount = _timeShield;
         _coolDownCount = _coolDown;
         _shield.gameObject.SetActive(true);
     }
