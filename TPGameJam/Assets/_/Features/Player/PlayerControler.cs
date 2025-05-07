@@ -4,12 +4,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerActions
 {
-    #region Publics
-
-   
-    #endregion
-
-
     #region Api Unity
 
     void Awake()
@@ -200,7 +194,11 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
             {
                 gameObject.SetActive(false);
                 _currentLife = _life;
-
+                if (_canvasGameOver != null)
+                {
+                    _canvasGameOver.SetActive(true);
+                    Time.timeScale = 0;
+                }
             }
         }
         
@@ -253,6 +251,7 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
     private float _timeShieldCount;
 
     [Header("Ecran GameOver")]
+    [SerializeField]private GameObject _canvasGameOver;
         
     private Vector2 _move;
     private Vector3 _look;
