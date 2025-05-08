@@ -1,16 +1,33 @@
+using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class ShieldUI : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    #region Api Unity
     void Start()
     {
         
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         
     }
+    #endregion
+
+
+    #region Utils
+
+
+    #endregion
+
+
+    #region Private And Protected
+
+    [SerializeField] private GameObject _shieldPrefab;
+    private List<Image> _shieldRects = new List<Image>();
+
+    #endregion
 }

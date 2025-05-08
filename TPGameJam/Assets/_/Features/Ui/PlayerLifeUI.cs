@@ -83,8 +83,6 @@ public class PlayerLifeUI : MonoBehaviour
     private List<Image> _lifeRects = new List<Image>();
     private int _currentLife;
 
-    [SerializeField] private GameObject _playerLife;
-
 
     #endregion
 }

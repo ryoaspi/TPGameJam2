@@ -1,6 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerActions
 {
@@ -10,6 +11,7 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
     {
         _playerInput = new InputPlayer.InputPlayer();
         _playerInput.Player.SetCallbacks(this);
+        
         
     }
 
@@ -55,6 +57,7 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
             }
             else
             {
+                _shieldUI.color = Color.gray;
                 DeactiveShield(); // Désactiver automatiquement
             }
         }
@@ -63,6 +66,10 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
             if (_coolDownCount > 0)
             {
                 _coolDownCount -= Time.deltaTime;
+            }
+            else
+            {
+                _shieldUI.color = Color.blue;
             }
         }
 
@@ -222,7 +229,7 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
     }
     private void DeactiveShield()
     {
-        Debug.Log("Bouclier désactiver");
+              
         _active = false;
         _timeShieldCount = _timeShield;
         _shield.gameObject.SetActive(false);
@@ -230,7 +237,7 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
 
     private void ActifShield()
     {
-        Debug.Log("Bouclier activer");
+        
         _active = true;
         _timeShieldCount = _timeShield;
         _coolDownCount = _coolDown;
@@ -253,6 +260,7 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
     [SerializeField] private GameObject _shield;
     [SerializeField] private float _timeShield = 2f;
     [SerializeField] private float _coolDown = 5;
+    [SerializeField] private Image _shieldUI;
     private bool _active = false;
     private float _coolDownCount;
     private float _timeShieldCount;
