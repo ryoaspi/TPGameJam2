@@ -104,7 +104,7 @@ public class EnemyLent : MonoBehaviour
     {
         if (_ammo)
         {
-            GameObject ammo = Instantiate(_ammo, transform.position + transform.right * 0.5f, transform.rotation);
+            GameObject ammo = Instantiate(_ammo, transform.position + transform.right *0.1f + transform.up * 2.5f, transform.rotation);
 
         }
     }

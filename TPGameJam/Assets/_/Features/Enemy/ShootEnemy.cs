@@ -38,8 +38,8 @@ public class ShootEnemy : MonoBehaviour
     #region Utils
 
     private void Move()
-    {
-        transform.position += transform.up * _speed * Time.deltaTime;
+    {        
+        transform.position += transform.up * _speed * Time.deltaTime;        
     }
 
     private void ShootLivetime()

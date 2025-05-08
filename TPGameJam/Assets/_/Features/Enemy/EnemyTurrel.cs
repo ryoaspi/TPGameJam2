@@ -77,7 +77,7 @@ public class EnemyTurrel : MonoBehaviour
     {
         if (_ammo)
         {
-            GameObject ammo = Instantiate(_ammo, transform.position + transform.right * 0.5f, transform.rotation);
+            GameObject ammo = Instantiate(_ammo, transform.position +transform.up *1.5f + transform.right * 0.1f, transform.rotation);
                
         }
     }
