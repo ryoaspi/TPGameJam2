@@ -145,3 +145,4 @@ MonoBehaviour:
   _angleOffset: -90
   _upShoot: 0
   _life: 3
+  _audioClip: {fileID: 8300000, guid: e0f99e4eb4be7bf4782db61bddbe7063, type: 3}

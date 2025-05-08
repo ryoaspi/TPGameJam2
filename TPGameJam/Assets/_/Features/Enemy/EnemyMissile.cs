@@ -45,6 +45,7 @@ public class EnemyMissile : MonoBehaviour
         if (collision.gameObject.layer == LayerMask.NameToLayer("Ammo") 
             || collision.gameObject.layer == LayerMask.NameToLayer("Obstacle") || collision.gameObject.layer == LayerMask.NameToLayer("Shield"))
         {
+            _audioClip.LoadAudioData();
             gameObject.SetActive(false);
 
         }
@@ -72,12 +73,14 @@ public class EnemyMissile : MonoBehaviour
         
         transform.rotation = Quaternion.Euler(0, 0, angle);
     }
-    
+
 
     #endregion
 
 
     #region Private And Protected
+
+    [SerializeField] private AudioClip _audioClip;
 
     [Header("D�tection")]
     [SerializeField] private Transform _player;

@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0.893466, y: -2.567605, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -148,4 +148,6 @@ MonoBehaviour:
   _ammo: {fileID: 9205379601952630962, guid: 50f5ffab8f16711468bfc317484f9fc4, type: 3}
   _fireRate: 1
   _angleOffset: -90
+  _upShoot: 0
   _life: 2
+  _destruction: {fileID: 8300000, guid: e0f99e4eb4be7bf4782db61bddbe7063, type: 3}

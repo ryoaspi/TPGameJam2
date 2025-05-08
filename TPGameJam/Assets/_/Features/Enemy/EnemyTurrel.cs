@@ -86,6 +86,7 @@ public class EnemyTurrel : MonoBehaviour
         _currentLife -= ammo.GetDamage();
         if (_currentLife <= 0)
         {
+            _audioClip.LoadAudioData();
             gameObject.SetActive(false);
             _currentLife = _life;
         }
@@ -109,6 +110,7 @@ public class EnemyTurrel : MonoBehaviour
 
     [Header("vie")]
     [SerializeField] private int _life = 3;
+    [SerializeField] private AudioClip _audioClip;
     private int _currentLife;
 
     #endregion
