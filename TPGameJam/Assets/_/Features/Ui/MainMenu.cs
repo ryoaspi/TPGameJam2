@@ -1,16 +1,27 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    #region Main Methods
+
+    public void StarButton()
     {
-        
+        SceneManager.LoadScene(_startScene);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ExitButton()
     {
-        
+        Application.Quit();
     }
+
+    #endregion
+
+
+    #region Private And Protected
+
+    [Header("Scene level 1")]
+    [SerializeField] private string _startScene;
+
+    #endregion
 }
