@@ -68,7 +68,7 @@ public class PlayerLifeUI : MonoBehaviour
     private void UpdateLifeDisplay()
     {
         for (int i = 0; i < _lifeRects.Count; i++)
-        {
+        {            
             _lifeRects[i].enabled = i < _currentLife;
         }
     }
@@ -79,7 +79,7 @@ public class PlayerLifeUI : MonoBehaviour
     #region Private And Protected
 
     [SerializeField] private GameObject _lifeRectPrefab;
-    [SerializeField] private int _maxLife = 3;
+    [SerializeField] private int _maxLife = 3;    
     private List<Image> _lifeRects = new List<Image>();
     private int _currentLife;
 
