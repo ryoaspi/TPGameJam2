@@ -113,6 +113,7 @@ public class EnemyLent : MonoBehaviour
         _currentLife -= ammo.GetDamage();
         if (_currentLife <= 0)
         {
+            _destruction.LoadAudioData();
             gameObject.SetActive(false);
             _currentLife = _life;
         }
@@ -161,6 +162,7 @@ public class EnemyLent : MonoBehaviour
     
     [Header("vie")]
     [SerializeField] private int _life = 3;
+    [SerializeField] private AudioClip _destruction;
     private int _currentLife;
 
     #endregion
