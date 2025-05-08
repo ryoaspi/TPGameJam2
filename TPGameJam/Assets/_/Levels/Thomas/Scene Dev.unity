@@ -620,6 +620,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 7307056877382153990, guid: 97e964a8e2e410a4a81e28cf7b76a7f4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8295277167354737050, guid: 97e964a8e2e410a4a81e28cf7b76a7f4, type: 3}
       propertyPath: _ammo
       value: 
@@ -696,18 +700,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3848419830427352334, guid: 28b413d2992110b4caa08518b3742f4b, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 3848419830427352334, guid: 28b413d2992110b4caa08518b3742f4b, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 3848419830427352334, guid: 28b413d2992110b4caa08518b3742f4b, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 3848419830427352334, guid: 28b413d2992110b4caa08518b3742f4b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10.31
       objectReference: {fileID: 0}
@@ -755,10 +747,6 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 892575056}
-    - target: {fileID: 7431316192695251285, guid: 28b413d2992110b4caa08518b3742f4b, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1206,16 +1194,8 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1773525751945053574, guid: 4205d4b3dfaf24e4481c282924433964, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1773525751945053574, guid: 4205d4b3dfaf24e4481c282924433964, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1773525751945053574, guid: 4205d4b3dfaf24e4481c282924433964, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 31.81
+      value: -4.9
       objectReference: {fileID: 0}
     - target: {fileID: 1773525751945053574, guid: 4205d4b3dfaf24e4481c282924433964, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1261,10 +1241,6 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 892575056}
-    - target: {fileID: 7416576585417964946, guid: 4205d4b3dfaf24e4481c282924433964, type: 3}
-      propertyPath: _destruction
-      value: 
-      objectReference: {fileID: 8300000, guid: e0f99e4eb4be7bf4782db61bddbe7063, type: 3}
     - target: {fileID: 7416576585417964946, guid: 4205d4b3dfaf24e4481c282924433964, type: 3}
       propertyPath: '_waypoints.Array.data[0]'
       value: 
