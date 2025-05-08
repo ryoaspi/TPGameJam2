@@ -149,12 +149,14 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
         {
             gameObject.SetActive(false);
             _lifeUI.TakeDamage(_currentLife);
-            _currentLife = 0;            
+            _currentLife = 0;
+            GameOver();
         }
         if (collision.gameObject.layer == LayerMask.NameToLayer("Health"))
         {
-            _lifeUI.Heal(1);
-            _currentLife++;           
+            int different = _life - _currentLife;
+            _currentLife = _life;           
+            _lifeUI.Heal(different);
         }
 
     }
@@ -194,14 +196,19 @@ public class PlayerControler : MonoBehaviour, InputPlayer.InputPlayer.IPlayerAct
             {
                 gameObject.SetActive(false);
                 _currentLife = _life;
-                if (_canvasGameOver != null)
-                {
-                    _canvasGameOver.SetActive(true);
-                    Time.timeScale = 0;
-                }
+                GameOver();
             }
         }
         
+    }
+
+    private void GameOver()
+    {
+        if (_canvasGameOver != null)
+        {
+            _canvasGameOver.SetActive(true);
+            Time.timeScale = 0;
+        }
     }
 
     private void UpdateMouseLook()
