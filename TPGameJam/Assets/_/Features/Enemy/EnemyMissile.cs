@@ -6,6 +6,8 @@ public class EnemyMissile : MonoBehaviour
     #region Api Unity
     void Start()
     {
+        _boxCollider = GetComponent<BoxCollider2D>();
+        _boxCollider.isTrigger = true;
         if (_player == null)
         {
             GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
@@ -23,7 +25,7 @@ public class EnemyMissile : MonoBehaviour
         
         if (distance <= _detectionRange)
         {
-            
+            _boxCollider.isTrigger = false;
             SetLaunchDirection(); //Calcule direction + rotation
             _hasLaunched = true; // Marque le missile comme lancé
         }
@@ -87,6 +89,7 @@ public class EnemyMissile : MonoBehaviour
 
     private bool _hasLaunched = false;
     private Vector3 _moveDirection;
+    private BoxCollider2D _boxCollider;
 
     #endregion
 }
