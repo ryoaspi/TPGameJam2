@@ -95,7 +95,7 @@ public class EnemyTurrel : MonoBehaviour
 
     #region Private And Protectd
 
-    [Header("Détection")]
+    [Header("Dï¿½tection")]
     [SerializeField] private Transform _player;
     [SerializeField] private float _detectionRange = 15f;
     [SerializeField] private float _rotationSpeed = 5f;
