@@ -312,12 +312,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b1c85642afeea848a7982ad6937c22f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _endZone: {fileID: 5707683639160671152, guid: a30824405e7af1b4e953f22b42f926cd, type: 3}
   _waypoints: []
   _speed: 1
-  _player: {fileID: 0}
+  _player: {fileID: 5666381891240754950, guid: 08d885be996f8634581340f03105fddb, type: 3}
   _detectionRange: 15
   _rotationSpeed: 5
-  _ammo: {fileID: 0}
+  _ammo: {fileID: 9205379601952630962, guid: 50f5ffab8f16711468bfc317484f9fc4, type: 3}
   _fireRate: 1
   _angleOffset: -90
   _upShoot: 0
