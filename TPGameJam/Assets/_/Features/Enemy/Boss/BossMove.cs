@@ -116,6 +116,7 @@ public class BossMove : MonoBehaviour
         _currentLife -= ammo.GetDamage();
         if (_currentLife <= 0)
         {
+            _endZone.SetActive(true);
             gameObject.SetActive(false);
             _currentLife = _life;
         }
@@ -142,7 +143,8 @@ public class BossMove : MonoBehaviour
 
     #region Private And Protected
 
-  
+    [SerializeField] private GameObject _endZone;
+
     [Header("Déplacement")]
     [SerializeField] private Transform[] _waypoints;
     [SerializeField] private float _speed;
