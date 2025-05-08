@@ -7,6 +7,7 @@ public class Finish : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
+            Time.timeScale = 0;
             _credit.gameObject.SetActive(true);
         }
     }

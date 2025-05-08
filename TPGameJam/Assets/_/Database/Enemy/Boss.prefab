@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6247009114741214291}
+  - component: {fileID: 8933972900269789925}
   m_Layer: 0
   m_Name: GameObject (3)
   m_TagString: Untagged
@@ -31,6 +32,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1937276018838078454}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8933972900269789925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2624736052340388290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 751e98b8d61954f4e8e01eee629f48ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 5666381891240754950, guid: 08d885be996f8634581340f03105fddb, type: 3}
+  _detectionRange: 15
+  _rotationSpeed: 5
+  _ammo: {fileID: 9205379601952630962, guid: dc8c75b94813e8a46b471894a1adcf85, type: 3}
+  _fireRate: 1
+  _angleOffset: -90
+  _upShoot: 0
+  _life: 3
 --- !u!1 &3378571773613874892
 GameObject:
   m_ObjectHideFlags: 0
@@ -40,6 +61,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6019579577479198648}
+  - component: {fileID: 7865071298052117867}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -62,6 +84,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1937276018838078454}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7865071298052117867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3378571773613874892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 751e98b8d61954f4e8e01eee629f48ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 5666381891240754950, guid: 08d885be996f8634581340f03105fddb, type: 3}
+  _detectionRange: 15
+  _rotationSpeed: 5
+  _ammo: {fileID: 9205379601952630962, guid: dc8c75b94813e8a46b471894a1adcf85, type: 3}
+  _fireRate: 1
+  _angleOffset: -90
+  _upShoot: 0
+  _life: 3
 --- !u!1 &5104484978049465101
 GameObject:
   m_ObjectHideFlags: 0
@@ -71,6 +113,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6652104938428540410}
+  - component: {fileID: 108270360465617303}
   m_Layer: 0
   m_Name: GameObject (1)
   m_TagString: Untagged
@@ -93,6 +136,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1937276018838078454}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &108270360465617303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5104484978049465101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 751e98b8d61954f4e8e01eee629f48ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 5666381891240754950, guid: 08d885be996f8634581340f03105fddb, type: 3}
+  _detectionRange: 15
+  _rotationSpeed: 5
+  _ammo: {fileID: 9205379601952630962, guid: dc8c75b94813e8a46b471894a1adcf85, type: 3}
+  _fireRate: 1
+  _angleOffset: -90
+  _upShoot: 0
+  _life: 3
 --- !u!1 &6777344436488091780
 GameObject:
   m_ObjectHideFlags: 0
@@ -102,6 +165,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3571599306411858300}
+  - component: {fileID: 7565340299946705810}
   m_Layer: 0
   m_Name: GameObject (2)
   m_TagString: Untagged
@@ -124,6 +188,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1937276018838078454}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7565340299946705810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6777344436488091780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 751e98b8d61954f4e8e01eee629f48ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 5666381891240754950, guid: 08d885be996f8634581340f03105fddb, type: 3}
+  _detectionRange: 15
+  _rotationSpeed: 5
+  _ammo: {fileID: 9205379601952630962, guid: dc8c75b94813e8a46b471894a1adcf85, type: 3}
+  _fireRate: 1
+  _angleOffset: -90
+  _upShoot: 0
+  _life: 3
 --- !u!1 &7307056877382153990
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,4 +314,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _waypoints: []
   _speed: 1
-  _loop: 1
+  _player: {fileID: 0}
+  _detectionRange: 15
+  _rotationSpeed: 5
+  _ammo: {fileID: 0}
+  _fireRate: 1
+  _angleOffset: -90
+  _upShoot: 0
+  _life: 3
