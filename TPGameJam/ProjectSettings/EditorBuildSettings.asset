@@ -6,8 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_/Levels/Martial/Scene Art Design.unity
-    guid: 1a43d4c104b3e8a4f84467dfb216f5ee
+    path: Assets/_/Levels/Martial/main_menu.unity
+    guid: cb04772ed0669d44eb4414ee05531d9f
+  - enabled: 1
+    path: Assets/_/Levels/Martial/main_game.unity
+    guid: fc53e2efefc7c8b4fa09b84a02953045
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 8698e3eb21194b640892906804065849, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
