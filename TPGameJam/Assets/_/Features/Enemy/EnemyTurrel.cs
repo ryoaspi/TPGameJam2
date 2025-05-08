@@ -77,7 +77,7 @@ public class EnemyTurrel : MonoBehaviour
     {
         if (_ammo)
         {
-            GameObject ammo = Instantiate(_ammo, transform.position +transform.up *1.5f + transform.right * 0.1f, transform.rotation);
+            GameObject ammo = Instantiate(_ammo, transform.position +transform.up *_upShoot + transform.right * 0.1f, transform.rotation);
                
         }
     }
@@ -105,6 +105,7 @@ public class EnemyTurrel : MonoBehaviour
     [SerializeField] private float _fireRate = 1f; // Tir par seconde
     private float _fireCooldown = 0f;
     [SerializeField] private float _angleOffset = -90;
+    [SerializeField] private float _upShoot;
 
     [Header("vie")]
     [SerializeField] private int _life = 3;

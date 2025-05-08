@@ -104,7 +104,7 @@ public class EnemyLent : MonoBehaviour
     {
         if (_ammo)
         {
-            GameObject ammo = Instantiate(_ammo, transform.position + transform.right *0.1f + transform.up * 2.5f, transform.rotation);
+            GameObject ammo = Instantiate(_ammo, transform.position + transform.right *0.1f + transform.up * _upShoot, transform.rotation);
 
         }
     }
@@ -156,6 +156,7 @@ public class EnemyLent : MonoBehaviour
     [SerializeField] private GameObject _ammo;
     [SerializeField] private float _fireRate = 1f; // Tir par seconde
     [SerializeField] private float _angleOffset = -90f;
+    [SerializeField] private float _upShoot; // avancement du tir
     private float _fireCooldown = 0f;
     
     [Header("vie")]
